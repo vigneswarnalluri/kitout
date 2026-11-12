@@ -27,12 +27,6 @@ export default async function ModelPage({ params }: Params) {
 
   return (
     <>
-      <nav className="breadcrumb" aria-label="Breadcrumb">
-        <div className="container">
-          <Link href="/">Home</Link> / <Link href="/models">Models</Link> / {model.name}
-        </div>
-      </nav>
-
       <PageHero eyebrow={model.tag} title={model.name} text={model.summary}>
         <a href="#specs" className="btn btn-outline-white">
           Specifications
@@ -41,6 +35,12 @@ export default async function ModelPage({ params }: Params) {
           Request a Quote
         </a>
       </PageHero>
+
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <div className="container">
+          <Link href="/">Home</Link> / <Link href="/models">Models</Link> / {model.name}
+        </div>
+      </nav>
 
       <section className="section">
         <div className="container split">
