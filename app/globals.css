@@ -464,7 +464,6 @@ h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; font-w
 @keyframes dropIn { from { transform: translateY(-100%); } to { transform: none; } }
 @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes floaty { 50% { transform: translateY(-8px); } }
-@keyframes progress { to { transform: scaleX(1); } }
 @keyframes redraw { 0% { transform: scaleX(1); transform-origin: right; } 49% { transform: scaleX(0); transform-origin: right; } 50% { transform: scaleX(0); transform-origin: left; } 100% { transform: scaleX(1); transform-origin: left; } }
 
 /* Buttons: colour sweep, lift, press */
@@ -506,12 +505,6 @@ h1, h2, h3, h4 { font-family: var(--font-display), system-ui, sans-serif; font-w
 .page-hero h1 { animation-delay: 0.1s; }
 .page-hero p { animation-delay: 0.2s; }
 .page-hero .btn-row { animation-delay: 0.3s; }
-
-/* Scroll progress line under the header */
-.scroll-progress { position: absolute; left: 0; right: 0; bottom: -2px; height: 3px; background: var(--gold); transform: scaleX(0); transform-origin: left; pointer-events: none; }
-@supports (animation-timeline: scroll()) {
-  .scroll-progress { animation: progress linear both; animation-timeline: scroll(root); }
-}
 
 /* Scroll reveal variants */
 .js-reveal [data-reveal="left"] { transform: translateX(-44px); }

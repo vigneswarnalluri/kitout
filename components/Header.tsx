@@ -146,8 +146,6 @@ export default function Header() {
           </div>
         </div>
 
-        <span className="scroll-progress" aria-hidden="true" />
-
         <div id="mobile-menu" className={drawerOpen ? "drawer open" : "drawer"} aria-hidden={!drawerOpen}>
           <nav aria-label="Mobile">
             {nav.map((item) => (
