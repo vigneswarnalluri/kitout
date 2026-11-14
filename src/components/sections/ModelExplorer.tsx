@@ -26,7 +26,7 @@ export default function ModelExplorer() {
 
       <div className="explorer-panel cast" aria-live="polite">
         <div className="explorer-art" key={m.slug}>
-          <Image src={`/images/${m.photo}.jpg`} alt={photoAlt(m)} fill sizes="(max-width: 1000px) 100vw, 60vw" style={m.pos ? { objectPosition: m.pos } : undefined} />
+          <Image src={`/images/builds/${m.photo}.jpg`} alt={photoAlt(m)} fill sizes="(max-width: 1000px) 100vw, 60vw" style={m.pos ? { objectPosition: m.pos } : undefined} />
           <span className="plate">{m.size}</span>
         </div>
         <div className="explorer-info">

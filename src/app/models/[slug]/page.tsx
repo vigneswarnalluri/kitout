@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PageHero from "@/components/PageHero";
-import PhotoGallery from "@/components/PhotoGallery";
-import QuoteForm from "@/components/QuoteForm";
+import PageHero from "@/components/sections/PageHero";
+import PhotoGallery from "@/components/sections/PhotoGallery";
+import QuoteForm from "@/components/sections/QuoteForm";
 import { photos } from "@/lib/media";
 import { getModel, models, photoAlt } from "@/lib/models";
 
@@ -48,7 +48,7 @@ export default async function ModelPage({ params }: Params) {
         <div className="container split">
           <div className="split-art" data-reveal="left">
             <div className="photo">
-              <Image src={`/images/${model.photo}.jpg`} alt={photoAlt(model)} fill priority sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
+              <Image src={`/images/builds/${model.photo}.jpg`} alt={photoAlt(model)} fill priority sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
               <span className="plate">{model.size}</span>
             </div>
           </div>

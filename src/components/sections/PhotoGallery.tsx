@@ -46,7 +46,7 @@ export default function PhotoGallery({ only }: { only?: string }) {
       <div className="gallery-grid" data-reveal="stagger">
         {shown.map((p, i) => (
           <button key={p.file} type="button" className="shot" onClick={() => setOpen(i)} aria-label={`Enlarge photo: ${p.caption}`}>
-            <Image src={`/images/${p.file}.jpg`} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 860px) 50vw, 33vw" />
+            <Image src={`/images/builds/${p.file}.jpg`} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 860px) 50vw, 33vw" />
             <span className="shot-cap">{p.caption}</span>
           </button>
         ))}
@@ -70,7 +70,7 @@ export default function PhotoGallery({ only }: { only?: string }) {
           </button>
           <figure onClick={(e) => e.stopPropagation()}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/images/${current.file}.jpg`} alt={current.alt} />
+            <img src={`/images/builds/${current.file}.jpg`} alt={current.alt} />
             <figcaption>
               <span>
                 {(open ?? 0) + 1} / {shown.length}

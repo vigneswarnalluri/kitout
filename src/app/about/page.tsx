@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import CtaBand from "@/components/CtaBand";
-import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/sections/CtaBand";
+import PageHero from "@/components/sections/PageHero";
 
 export const metadata: Metadata = {
   title: "About",
@@ -35,7 +35,7 @@ export default function AboutPage() {
           </div>
           <div className="split-art" data-reveal="right">
             <div className="photo">
-              <Image src="/images/build-office.jpg" alt="Finished office interior inside a Kit Out container" fill sizes="(max-width: 860px) 100vw, 50vw" />
+              <Image src="/images/builds/build-office.jpg" alt="Finished office interior inside a Kit Out container" fill sizes="(max-width: 860px) 100vw, 50vw" />
             </div>
           </div>
         </div>

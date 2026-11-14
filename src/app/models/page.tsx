@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import CtaBand from "@/components/CtaBand";
-import ModelCard from "@/components/ModelCard";
-import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/sections/CtaBand";
+import ModelCard from "@/components/ui/ModelCard";
+import PageHero from "@/components/sections/PageHero";
 import { models } from "@/lib/models";
 
 export const metadata: Metadata = {

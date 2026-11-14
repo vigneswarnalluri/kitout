@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Mono, DM_Sans } from "next/font/google";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import Reveal from "@/components/Reveal";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import Reveal from "@/components/layout/Reveal";
 import { site } from "@/lib/site";
 import "./globals.css";
 

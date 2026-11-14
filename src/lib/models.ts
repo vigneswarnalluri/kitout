@@ -8,7 +8,7 @@ export type Model = {
   tag: string;
   /** Which build in the photo gallery this unit is shown by. */
   project: ProjectKey;
-  /** Lead photo (a file in public/images, without extension). */
+  /** Lead photo (a file in public/images/builds, without extension). */
   photo: string;
   /** Which part of the lead photo stays visible when it is cropped. */
   pos?: string;

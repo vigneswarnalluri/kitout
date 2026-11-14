@@ -121,7 +121,7 @@ export default function Header() {
         <div className="container">
           <div className="navbar cast" ref={barRef}>
             <Link href="/" className="logo" onClick={closeAll} aria-label={`${site.name} ${site.tagline}, home`}>
-              <Image src="/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} priority />
+              <Image src="/images/brand/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} priority />
             </Link>
 
             <span className="nav-marker" aria-hidden="true" style={marker ? { left: marker.left, width: marker.width, opacity: 1 } : { opacity: 0 }} />
@@ -149,7 +149,7 @@ export default function Header() {
                         {models.map((m) => (
                           <Link key={m.slug} href={`/models/${m.slug}`} className="mega-item" onClick={closeAll} tabIndex={megaOpen ? 0 : -1}>
                             <span className="mega-thumb">
-                              <Image src={`/images/${m.photo}.jpg`} alt="" fill sizes="280px" style={m.pos ? { objectPosition: m.pos } : undefined} />
+                              <Image src={`/images/builds/${m.photo}.jpg`} alt="" fill sizes="280px" style={m.pos ? { objectPosition: m.pos } : undefined} />
                             </span>
                             <span className="mega-tag">{m.tag}</span>
                             <strong>{m.name}</strong>

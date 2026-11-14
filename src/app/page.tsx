@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import CtaBand from "@/components/CtaBand";
-import Icon, { type IconName } from "@/components/Icon";
-import ModelExplorer from "@/components/ModelExplorer";
-import PhotoGallery from "@/components/PhotoGallery";
-import Showreel from "@/components/Showreel";
+import CtaBand from "@/components/sections/CtaBand";
+import Icon, { type IconName } from "@/components/ui/Icon";
+import ModelExplorer from "@/components/sections/ModelExplorer";
+import PhotoGallery from "@/components/sections/PhotoGallery";
+import Showreel from "@/components/sections/Showreel";
 import { models } from "@/lib/models";
 
 const stats = [
@@ -58,7 +58,7 @@ export default function HomePage() {
     <>
       <section className="hero4">
         <div className="hero4-media">
-          <Image src="/images/hero-container.jpg" alt="White shipping container carrying the Kit Out Container Co. logo, in a container terminal at golden hour" fill priority sizes="100vw" />
+          <Image src="/images/brand/hero-container.jpg" alt="White shipping container carrying the Kit Out Container Co. logo, in a container terminal at golden hour" fill priority sizes="100vw" />
         </div>
         <div className="container hero4-inner">
           <h1>
@@ -140,7 +140,7 @@ export default function HomePage() {
         <div className="container split">
           <div className="split-art layered" data-reveal="left">
             <div className="photo">
-              <Image src="/images/build-exterior.jpg" alt="Cream 40-foot container office with a door, window and mini-split air conditioner" fill sizes="(max-width: 860px) 100vw, 50vw" style={{ objectPosition: "50% 62%" }} />
+              <Image src="/images/builds/build-exterior.jpg" alt="Cream 40-foot container office with a door, window and mini-split air conditioner" fill sizes="(max-width: 860px) 100vw, 50vw" style={{ objectPosition: "50% 62%" }} />
             </div>
             <div className="float-card cast">
               <h3>Leaves the workshop with</h3>

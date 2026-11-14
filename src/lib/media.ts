@@ -1,5 +1,5 @@
 // Photos are Kit Out's own, supplied by the client.
-// Video clips are still stock; sources and licences are listed in MEDIA-CREDITS.md.
+// Video clips are still stock; sources and licences are listed in docs/MEDIA-CREDITS.md.
 
 // Each build is one filter tab in the gallery.
 export const projects = [

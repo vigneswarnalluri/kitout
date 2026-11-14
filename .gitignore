@@ -6,7 +6,5 @@ out
 *.tsbuildinfo
 next-env.d.ts
 
-# original photos and logo as supplied; web copies live in public/
-/1/
-/2/
-/IMG_*
+# photos and logo exactly as the client supplied them; web copies live in public/images
+/client-originals/

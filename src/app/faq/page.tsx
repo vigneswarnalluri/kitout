@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import CtaBand from "@/components/CtaBand";
-import PageHero from "@/components/PageHero";
+import CtaBand from "@/components/sections/CtaBand";
+import PageHero from "@/components/sections/PageHero";
 
 export const metadata: Metadata = {
   title: "FAQ",

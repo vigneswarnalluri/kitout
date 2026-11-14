@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <Image className="footer-logo" src="/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} />
+          <Image className="footer-logo" src="/images/brand/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} />
           <p className="footer-text">{site.description}</p>
         </div>
         <div>

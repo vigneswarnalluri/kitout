@@ -1,13 +1,13 @@
 # Media credits
 
-## Photos (`public/images/`)
+## Photos (`public/images/builds/`)
 
 All photos are Kit Out's own, supplied by the client: the 40ft combo office and storage build,
 the two-storey stacked office, the grey 40ft all-office unit and the cream modular office image. Location data and other camera metadata were removed from the published copies.
 
-The hero image (`hero-container.jpg`) is the client's branding image of a Kit Out container.
+The hero image (`public/images/brand/hero-container.jpg`) is the client's branding image of a Kit Out container.
 
-The logo files (`public/logo-white.png`, `public/logo-dark.png`) were made from the client's
+The logo files (`public/images/brand/logo-white.png`, `public/images/brand/logo-dark.png`) were made from the client's
 supplied logo.
 
 ## Video (`public/videos/`)

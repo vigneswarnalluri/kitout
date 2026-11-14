@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import PageHero from "@/components/PageHero";
-import QuoteForm from "@/components/QuoteForm";
+import PageHero from "@/components/sections/PageHero";
+import QuoteForm from "@/components/sections/QuoteForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
