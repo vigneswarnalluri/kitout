@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Request a quote for a container home or get in touch with the Kitout team.",
+  description: "Request a quote for a container office or storage unit, or get in touch with the Kit Out team.",
 };
 
 export default function ContactPage() {

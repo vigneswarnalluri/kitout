@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { clips } from "@/lib/media";
 
+// Each clip plays for this long before the next one starts.
+const CLIP_SECONDS = 6;
+
 export default function Showreel() {
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -50,7 +53,7 @@ export default function Showreel() {
   };
 
   return (
-    <section className="reel" ref={wrapRef} aria-label="How a container becomes a home">
+    <section className="reel" ref={wrapRef} aria-label="How a container becomes a finished unit">
       <video
         key={clip.file}
         ref={videoRef}
@@ -60,7 +63,10 @@ export default function Showreel() {
         poster={`/videos/${clip.file}.jpg`}
         onTimeUpdate={(e) => {
           const v = e.currentTarget;
-          if (v.duration) setProgress(v.currentTime / v.duration);
+          if (!v.duration) return;
+          const limit = Math.min(v.duration, CLIP_SECONDS);
+          if (v.currentTime >= limit) select((active + 1) % clips.length);
+          else setProgress(v.currentTime / limit);
         }}
         onEnded={() => select((active + 1) % clips.length)}
       >
@@ -70,7 +76,6 @@ export default function Showreel() {
       <div className="reel-inner">
         <div className="container">
           <div className="reel-caption" key={clip.file}>
-            <span className="eyebrow">In the workshop</span>
             <h2>{clip.title}</h2>
             <p>{clip.text}</p>
           </div>

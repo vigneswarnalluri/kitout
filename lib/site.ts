@@ -1,10 +1,10 @@
 // Single place for business details. Everything here is placeholder content
 // until the client confirms the real values.
 export const site = {
-  name: "Kitout",
-  tagline: "Container Homes",
+  name: "Kit Out",
+  tagline: "Container Co.",
   description:
-    "Kitout designs and builds steel-framed container homes, studios and offices, finished in the factory and delivered ready to live in.",
+    "Kit Out converts shipping containers into insulated offices, secure storage and stacked buildings, finished in the workshop and delivered ready to use.",
   email: "hello@example.com",
   phone: "+00 000 000 0000",
   address: "Workshop address to be confirmed",
@@ -22,7 +22,7 @@ export const site = {
 
 export const nav = [
   { label: "Home", href: "/" },
-  { label: "Models", href: "/models" },
+  { label: "Units", href: "/models" },
   { label: "How It Works", href: "/process" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },

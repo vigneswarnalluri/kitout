@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { nav, site } from "@/lib/site";
 import { models } from "@/lib/models";
@@ -7,9 +8,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <p className="footer-brand">
-            {site.name} <span>{site.tagline}</span>
-          </p>
+          <Image className="footer-logo" src="/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} />
           <p className="footer-text">{site.description}</p>
         </div>
         <div>
@@ -23,7 +22,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h4>Models</h4>
+          <h4>Units</h4>
           <ul>
             {models.map((m) => (
               <li key={m.slug}>
@@ -54,7 +53,7 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>
-          © {new Date().getFullYear()} {site.name} {site.tagline}. All rights reserved.
+          © {new Date().getFullYear()} {site.name} {site.tagline} All rights reserved.
         </span>
       </div>
     </footer>

@@ -5,3 +5,8 @@ out
 .env.local
 *.tsbuildinfo
 next-env.d.ts
+
+# original photos and logo as supplied; web copies live in public/
+/1/
+/2/
+/IMG_*

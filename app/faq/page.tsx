@@ -4,18 +4,19 @@ import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "Common questions about container homes: permits, insulation, delivery, foundations and customisation.",
+  description: "Common questions about container offices and storage units: permits, insulation, delivery, site preparation, security and customization.",
 };
 
 const faqs = [
-  { q: "Do I need planning permission or a building permit?", a: "Usually, yes, if the building will be lived in. Rules differ by country and by local authority, so check with your planning office early. We supply the drawings and specifications they normally ask for." },
-  { q: "Are container homes warm in winter and cool in summer?", a: "Bare steel conducts heat, so insulation is essential. We insulate the walls, floor and roof and fit double-glazed doors and windows. The insulation level is chosen for the climate where the home will stand." },
-  { q: "What foundations do I need?", a: "Containers carry their load at the corners, so foundations can be simple: concrete pads, piers or ground screws are common. We provide a foundation plan for your contractor." },
-  { q: "How is the home delivered?", a: "Each module travels on a standard truck and is lifted into place with a crane or a side-loader. For overseas orders, modules ship like any other container. Your site needs access for the truck and the lift." },
-  { q: "Can I change the layout?", a: "Yes. Our models are starting points. Door and window positions, room layout, finishes and fittings can all be changed, and fully custom designs are welcome." },
-  { q: "What is included in the price?", a: "The finished building: structure, insulation, interior lining, wiring, plumbing, kitchen, bathroom, flooring and exterior paint. Delivery, cranage, foundations and service connections are quoted separately because they depend on your site." },
-  { q: "Will it rust?", a: "Containers are made from weathering steel designed for years at sea. We treat any cut edges, prime and paint the exterior, and recommend a simple repaint as part of long-term maintenance, as with any steel building." },
-  { q: "Can I add to it later?", a: "Yes. Modules can be joined side by side or stacked, and we plan for future extensions if you tell us at the design stage." },
+  { q: "Do I need a permit?", a: "It depends on where the unit is going and how long it will stay. Rules differ between local authorities, so check early. We can supply the drawings and specifications they usually ask for." },
+  { q: "Will it be comfortable in summer and winter?", a: "Yes. Bare steel conducts heat, so we frame the interior, insulate it with spray foam and line the walls and ceiling. A mini-split unit provides both heating and cooling." },
+  { q: "What does the site need?", a: "A firm, level base and a power supply. Containers carry their load at the corners, so a gravel pad, concrete piers or a slab all work. We tell you what your unit needs before delivery." },
+  { q: "How is it delivered?", a: "By truck, then set in place with a tilt-bed, forklift or crane, depending on the unit and the site. You need clear access for the truck and room to unload." },
+  { q: "Can I change the layout?", a: "Yes. Our units are starting points. Door and window positions, room layout, finishes and fittings can all be changed, and fully custom builds are welcome." },
+  { q: "What is included in the price?", a: "The finished unit: framing, insulation, wall and ceiling panels, flooring, wiring, lighting, outlets, doors, windows and exterior paint. Delivery, site preparation and the power connection are quoted separately because they depend on your site." },
+  { q: "How secure is it?", a: "A container is a steel box built to be locked. We fit steel entry doors, can add security screens over the windows, and keep the original lockable cargo doors on storage bays." },
+  { q: "Will it rust?", a: "Containers are made from weathering steel designed for years at sea. We treat any cut edges, then prime and paint the exterior. Like any steel building, it benefits from a repaint as part of long-term maintenance." },
+  { q: "Can I add to it later?", a: "Yes. Units can be placed side by side or stacked, and we plan for future additions if you tell us at the design stage." },
 ];
 
 export default function FaqPage() {

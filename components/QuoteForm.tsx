@@ -57,11 +57,11 @@ export default function QuoteForm({ defaultModel = "" }: { defaultModel?: string
           <input name="phone" type="tel" autoComplete="tel" />
         </label>
         <label>
-          Country / region of the build
+          Delivery location
           <input name="location" required />
         </label>
         <label>
-          Model of interest
+          Unit of interest
           <select name="model" defaultValue={defaultModel}>
             <option value="">Not sure yet</option>
             {models.map((m) => (
@@ -69,23 +69,24 @@ export default function QuoteForm({ defaultModel = "" }: { defaultModel?: string
                 {m.name} ({m.tag})
               </option>
             ))}
-            <option value="Custom">Custom design</option>
+            <option value="Custom">Custom build</option>
           </select>
         </label>
         <label className="full">
           Intended use
           <select name="use" defaultValue="">
             <option value="">Select one</option>
-            <option>Home to live in</option>
-            <option>Rental or holiday let</option>
-            <option>Office or studio</option>
-            <option>Commercial (café, shop, site cabin)</option>
+            <option>Job-site office</option>
+            <option>Permanent office</option>
+            <option>Storage</option>
+            <option>Office and storage</option>
+            <option>Retail, sales or hospitality</option>
             <option>Other</option>
           </select>
         </label>
         <label className="full">
           Tell us about your project
-          <textarea name="message" rows={5} placeholder="Plot, timeline, budget, anything else we should know" />
+          <textarea name="message" rows={5} placeholder="Site, timeline, budget, anything else we should know" />
         </label>
         {/* Honeypot: hidden from people, filled in by bots. */}
         <label className="hp" aria-hidden="true">

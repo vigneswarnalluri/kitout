@@ -1,13 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
-import type { Model } from "@/lib/models";
-import ContainerArt from "./ContainerArt";
+import { photoAlt, type Model } from "@/lib/models";
 
 export default function ModelCard({ model }: { model: Model }) {
   return (
     <article className="model-card cast">
       <div className="model-card-art">
-        <ContainerArt variant={model.variant} body={model.body} label={`${model.name} illustration`} />
-        <span className="plate">{model.modules}</span>
+        <Image src={`/images/${model.photo}.jpg`} alt={photoAlt(model)} fill sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
+        <span className="plate">{model.size}</span>
       </div>
       <div className="model-card-body">
         <div className="model-card-head">
@@ -23,18 +23,12 @@ export default function ModelCard({ model }: { model: Model }) {
         </div>
         <p className="model-desc">{model.summary}</p>
         <dl className="model-facts">
-          <div>
-            <dt>Beds</dt>
-            <dd>{model.beds}</dd>
-          </div>
-          <div>
-            <dt>Baths</dt>
-            <dd>{model.baths}</dd>
-          </div>
-          <div>
-            <dt>Area</dt>
-            <dd>{model.area.split(" / ")[0]}</dd>
-          </div>
+          {model.facts.map((f) => (
+            <div key={f.label}>
+              <dt>{f.label}</dt>
+              <dd>{f.value}</dd>
+            </div>
+          ))}
         </dl>
       </div>
     </article>

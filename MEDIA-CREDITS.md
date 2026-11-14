@@ -1,33 +1,22 @@
 # Media credits
 
-All photos and video on the site are stock placeholders. None of them show Kitout's own
-buildings or workshop. Replace them with the client's own media before launch where possible.
-
 ## Photos (`public/images/`)
 
-All from Wikimedia Commons, released by their authors under CC0 (public domain dedication).
-No attribution is legally required.
+All photos are Kit Out's own, supplied by the client: the 40ft combo office and storage build,
+the two-storey stacked office, the grey 40ft all-office unit and the cream modular office image. Location data and other camera metadata were removed from the published copies.
 
-| File | Commons title |
-| --- | --- |
-| deck-pavilion.jpg | File:Nice container.jpg |
-| deck-terrace.jpg | File:Container event.jpg |
-| glass-stack.jpg | File:Container office in Ludwigshafen 05.jpg |
-| interior-window.jpg | File:Office container.JPG |
-| interior-office.jpg | File:Container hehe.JPG |
-| container-yard.jpg | File:Container terminal from above (Unsplash).jpg |
-| container-stack.jpg | File:Container wall. (14181264096).jpg |
+The hero image (`hero-container.jpg`) is the client's branding image of a Kit Out container.
 
-Each can be looked up at `https://commons.wikimedia.org/wiki/<title>`.
+The logo files (`public/logo-white.png`, `public/logo-dark.png`) were made from the client's
+supplied logo.
 
 ## Video (`public/videos/`)
 
-All from Mixkit (mixkit.co), offered under the Mixkit Stock Video Free License.
+The video clips are stock placeholders, not Kit Out footage. All from Mixkit (mixkit.co), offered under the Mixkit Stock Video Free License.
 Check https://mixkit.co/license/ for the current terms before launch.
 
 | File | Mixkit clip |
 | --- | --- |
-| yard.mp4 | 36309, huge container area on a shoreline, aerial shot |
 | containers.mp4 | 26950, stacked international shipping containers |
 | welding.mp4 | 47293, welder welding construction steel frames |
 | grinding.mp4 | 47295, sparks flying out of a metal grinder |

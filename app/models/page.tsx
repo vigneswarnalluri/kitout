@@ -5,14 +5,14 @@ import PageHero from "@/components/PageHero";
 import { models } from "@/lib/models";
 
 export const metadata: Metadata = {
-  title: "Models",
-  description: "Container home models from a 20ft studio to a two-storey, two-bedroom home.",
+  title: "Units",
+  description: "Container offices, office and storage combos, and two-story stacked builds from Kit Out Container Co.",
 };
 
 export default function ModelsPage() {
   return (
     <>
-      <PageHero eyebrow="Our models" title="Container homes for every plot." text="Pick a layout as your starting point. Every model can be adapted, extended and finished to suit you." />
+      <PageHero eyebrow="Our units" title="Container units for every site." text="Pick a unit as your starting point. Every one can be re-planned, fitted out and painted to suit the job." />
       <section className="section section-cream">
         <div className="container">
           <div className="card-grid card-grid-2" data-reveal="stagger">

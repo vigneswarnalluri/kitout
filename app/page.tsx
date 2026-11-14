@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import BgVideo from "@/components/BgVideo";
 import CtaBand from "@/components/CtaBand";
 import Icon, { type IconName } from "@/components/Icon";
 import ModelExplorer from "@/components/ModelExplorer";
@@ -9,27 +8,28 @@ import Showreel from "@/components/Showreel";
 import { models } from "@/lib/models";
 
 const stats = [
-  { value: `${models.length}`, label: "Layouts to start from" },
-  { value: "15–60 m²", label: "Floor areas" },
-  { value: "2.9 m", label: "High-cube module height" },
+  { value: `${models.length}`, label: "Unit types to start from" },
+  { value: "20 & 40 ft", label: "Container lengths" },
+  { value: "1 or 2", label: "Stories" },
 ];
 
 const steps = [
-  { title: "Design", text: "Start from one of our models or bring your own layout. We draw it up, agree finishes and fix the price before any steel is cut." },
-  { title: "Build", text: "Your home is built indoors: structure, insulation, wiring, plumbing, kitchen and bathroom, all finished and checked in the workshop." },
-  { title: "Deliver", text: "The finished modules travel by truck or ship, are lifted onto your foundations and connected to services." },
+  { title: "Design", text: "Start from one of our units or bring your own layout. We agree the plan, the finishes and the price before any steel is cut." },
+  { title: "Build", text: "Your unit is built indoors: framing, spray foam insulation, wiring, wall panels, flooring and air conditioning, all finished and checked in the workshop." },
+  { title: "Deliver", text: "The finished unit travels by truck, is set in place on your site and connected to power." },
 ];
 
-const aboutPoints = ["Kitchen and bathroom fitted", "Walls, floor and roof insulated", "Every opening reinforced", "Wiring and plumbing tested"];
+// Matches what the photo beside it shows: the 40ft office and storage build.
+const aboutPoints = ["Spray foam insulation", "Framed and lined interior", "Wiring and lighting", "Mini-split air conditioning"];
 
 const reasons: { title: string; text: string; icon: IconName }[] = [
-  { title: "Built to travel", text: "A container is a steel frame engineered to be stacked high and shipped across oceans. That makes it a strong, stable shell for a home.", icon: "shield" },
-  { title: "Faster than site building", text: "Workshop construction is not held up by weather, and groundworks can happen while the home is being built.", icon: "clock" },
+  { title: "Built to travel", text: "A container is a steel frame engineered to be stacked high and shipped across oceans. That makes it a strong, secure shell for an office or a store.", icon: "shield" },
+  { title: "Faster than site building", text: "Workshop construction is not held up by weather, and your site can be prepared while the unit is being built.", icon: "clock" },
   { title: "A fixed price", text: "You agree the specification and the price up front, with a clear list of what is and is not included.", icon: "tag" },
-  { title: "Room to grow", text: "Modules can be added, stacked or moved later as your needs change. Tell us at the design stage and we plan the connections in.", icon: "grow" },
+  { title: "Room to grow", text: "Units can be added, stacked or moved later as your needs change. Tell us at the design stage and we plan the connections in.", icon: "grow" },
 ];
 
-const uses = ["Homes", "Guest suites", "Holiday rentals", "Garden studios", "Home offices", "Cafés and kiosks", "Site offices", "Staff accommodation", "Pop-up retail", "Workshops"];
+const uses = ["Site offices", "Secure storage", "Office + storage", "Stacked offices", "Sales offices", "Break rooms", "Workshops", "Equipment stores", "Pop-up retail", "Custom builds"];
 const usesA = uses.slice(0, 5);
 const usesB = uses.slice(5);
 
@@ -56,39 +56,38 @@ function MarqueeRow({ items, reverse }: { items: string[]; reverse?: boolean }) 
 export default function HomePage() {
   return (
     <>
-      <section className="hero3">
-        <div className="hero3-media">
-          <BgVideo name="yard" />
+      <section className="hero4">
+        <div className="hero4-media">
+          <Image src="/images/hero-container.jpg" alt="White shipping container carrying the Kit Out Container Co. logo, in a container terminal at golden hour" fill priority sizes="100vw" />
         </div>
-        <div className="container hero3-inner">
-          <div>
-            <h1>
-              Steel-strong homes, <em>finished</em> before they arrive.
-            </h1>
-            <p className="hero-sub">We design and build container homes, studios and offices in our workshop, then deliver them ready to connect and live in.</p>
-            <div className="btn-row">
-              <Link href="/contact#quote" className="btn btn-gold">
-                Get a Quote
-              </Link>
-              <Link href="/models" className="btn btn-outline-white">
-                Explore Models
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="hero3-bar">
-          <div className="container hero3-bar-inner">
-            <dl>
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <dd>{s.value}</dd>
-                  <dt>{s.label}</dt>
-                </div>
-              ))}
-            </dl>
+        <div className="container hero4-inner">
+          <h1>
+            Container offices and storage, <em>finished</em> before they arrive.
+          </h1>
+          <div className="btn-row">
+            <Link href="/contact#quote" className="btn btn-gold">
+              Get a Quote
+            </Link>
+            <Link href="/models" className="btn btn-outline-white">
+              Explore Units
+            </Link>
           </div>
         </div>
       </section>
+
+      <div className="hero4-strip">
+        <div className="container hero4-strip-inner">
+          <p className="hero-sub">We convert shipping containers into insulated offices, secure storage and stacked buildings in our workshop, then deliver them ready to plug in and use.</p>
+          <dl>
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dd>{s.value}</dd>
+                <dt>{s.label}</dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
 
       <section className="section" id="services">
         <div className="container">
@@ -124,11 +123,11 @@ export default function HomePage() {
         <div className="container">
           <div className="row-head" data-reveal>
             <div>
-              <span className="eyebrow">Our models</span>
+              <span className="eyebrow">Our units</span>
               <h2 className="section-heading">Choose a starting point.</h2>
             </div>
             <Link href="/models" className="btn btn-outline-white">
-              See All Models
+              See All Units
             </Link>
           </div>
           <div data-reveal>
@@ -141,7 +140,7 @@ export default function HomePage() {
         <div className="container split">
           <div className="split-art layered" data-reveal="left">
             <div className="photo">
-              <Image src="/images/deck-pavilion.jpg" alt="White modular building with large windows opening onto a timber deck" fill sizes="(max-width: 860px) 100vw, 50vw" />
+              <Image src="/images/build-exterior.jpg" alt="Cream 40-foot container office with a door, window and mini-split air conditioner" fill sizes="(max-width: 860px) 100vw, 50vw" style={{ objectPosition: "50% 62%" }} />
             </div>
             <div className="float-card cast">
               <h3>Leaves the workshop with</h3>
@@ -153,10 +152,10 @@ export default function HomePage() {
             </div>
           </div>
           <div data-reveal="right">
-            <span className="eyebrow">About Kitout</span>
-            <h2 className="section-heading">A home with a steel backbone.</h2>
+            <span className="eyebrow">About Kit Out</span>
+            <h2 className="section-heading">Workspace with a steel backbone.</h2>
             <p className="section-body">
-              Kitout turns high-cube shipping containers into insulated, fully fitted homes. Every build leaves our workshop finished inside and out, so time on your site is measured in days, not months.
+              Kit Out turns shipping containers into insulated, fully finished offices and storage units. Every build leaves our workshop wired, lined and climate controlled, so it is ready to use the day it lands.
             </p>
             <Link href="/about" className="btn btn-green">
               Learn More About Us
@@ -169,10 +168,10 @@ export default function HomePage() {
         <div className="container">
           <div className="row-head" data-reveal>
             <div>
-              <span className="eyebrow">Gallery</span>
-              <h2 className="section-heading">What container building looks like.</h2>
+              <span className="eyebrow">Our work</span>
+              <h2 className="section-heading">Offices, storage and stacked builds.</h2>
             </div>
-            <p className="row-note">Timber decks, full-height glazing and bright, insulated interiors. Select a photo to enlarge it.</p>
+            <p className="row-note">Recent Kit Out builds, from single 40-foot offices to a two-story stack with a deck. Filter by build, and select a photo to enlarge it.</p>
           </div>
           <PhotoGallery />
         </div>
@@ -182,7 +181,7 @@ export default function HomePage() {
         <div className="container">
           <div className="row-head" data-reveal>
             <div>
-              <span className="eyebrow">Why container homes</span>
+              <span className="eyebrow">Why build with containers</span>
               <h2 className="section-heading">Strong, quick to build and easy to place.</h2>
             </div>
           </div>

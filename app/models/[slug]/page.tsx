@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ContainerArt from "@/components/ContainerArt";
 import PageHero from "@/components/PageHero";
+import PhotoGallery from "@/components/PhotoGallery";
 import QuoteForm from "@/components/QuoteForm";
-import { getModel, models } from "@/lib/models";
+import { photos } from "@/lib/media";
+import { getModel, models, photoAlt } from "@/lib/models";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -18,12 +20,12 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return model ? { title: model.name, description: model.summary } : {};
 }
 
-const galleryColours = ["#0D4532", "#272727", "#A37A52"];
-
 export default async function ModelPage({ params }: Params) {
   const { slug } = await params;
   const model = getModel(slug);
   if (!model) notFound();
+
+  const photoCount = photos.filter((p) => p.project === model.project).length;
 
   return (
     <>
@@ -38,14 +40,17 @@ export default async function ModelPage({ params }: Params) {
 
       <nav className="breadcrumb" aria-label="Breadcrumb">
         <div className="container">
-          <Link href="/">Home</Link> / <Link href="/models">Models</Link> / {model.name}
+          <Link href="/">Home</Link> / <Link href="/models">Units</Link> / {model.name}
         </div>
       </nav>
 
       <section className="section">
         <div className="container split">
           <div className="split-art" data-reveal="left">
-            <ContainerArt variant={model.variant} body={model.body} label={`${model.name} illustration`} />
+            <div className="photo">
+              <Image src={`/images/${model.photo}.jpg`} alt={photoAlt(model)} fill priority sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
+              <span className="plate">{model.size}</span>
+            </div>
           </div>
           <div>
             <span className="eyebrow">Why the {model.name}</span>
@@ -67,7 +72,7 @@ export default async function ModelPage({ params }: Params) {
           <div>
             <span className="eyebrow">Overview</span>
             <div className="divider" />
-            <h2 className="section-heading">{model.modules}</h2>
+            <h2 className="section-heading">{model.size}</h2>
             <p className="section-body">{model.intro}</p>
             <ul className="pills pills-left">
               {model.tags.map((t) => (
@@ -94,14 +99,6 @@ export default async function ModelPage({ params }: Params) {
           <div className="table-wrap">
             <table className="spec-table">
               <tbody>
-                <tr>
-                  <th scope="row">Bedrooms</th>
-                  <td>{model.beds}</td>
-                </tr>
-                <tr>
-                  <th scope="row">Bathrooms</th>
-                  <td>{model.baths}</td>
-                </tr>
                 {model.specs.map((s) => (
                   <tr key={s.label}>
                     <th scope="row">{s.label}</th>
@@ -111,7 +108,7 @@ export default async function ModelPage({ params }: Params) {
               </tbody>
             </table>
           </div>
-          <p className="note">Dimensions are external and approximate. Final specification is confirmed in your written quote.</p>
+          <p className="note">Dimensions are external and approximate. The final specification is confirmed in your written quote.</p>
         </div>
       </section>
 
@@ -136,24 +133,22 @@ export default async function ModelPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container">
-          <span className="eyebrow">Finishes</span>
-          <div className="divider" />
-          <h2 className="section-heading">Pick your exterior colour.</h2>
-          <div className="gallery" data-reveal="stagger">
-            {galleryColours.map((c) => (
-              <ContainerArt key={c} variant={model.variant} body={c} label={`${model.name} in an alternative colour`} />
-            ))}
+      {photoCount > 1 ? (
+        <section className="section">
+          <div className="container">
+            <span className="eyebrow">Photos</span>
+            <div className="divider" />
+            <h2 className="section-heading">This build, inside and out.</h2>
+            <PhotoGallery only={model.project} />
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <section className="section section-cream" id="quote">
         <div className="container">
           <div className="form-panel">
             <h2>Request a quote for the {model.name}</h2>
-            <p>Tell us where you plan to build and we will send a written price and delivery estimate.</p>
+            <p>Tell us where it is going and we will send a written price and delivery estimate.</p>
             <QuoteForm defaultModel={model.name} />
           </div>
         </div>

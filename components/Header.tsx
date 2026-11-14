@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import ContainerArt from "./ContainerArt";
 import { models } from "@/lib/models";
 import { nav, site } from "@/lib/site";
 
@@ -108,12 +108,8 @@ export default function Header() {
       <header className={headerClass} onFocus={() => setHidden(false)}>
         <div className="container">
           <div className="navbar cast" ref={barRef}>
-            <Link href="/" className="logo" onClick={closeAll}>
-              <span className="logo-mark" aria-hidden="true" />
-              <span>
-                <strong>{site.name}</strong>
-                <small>{site.tagline}</small>
-              </span>
+            <Link href="/" className="logo" onClick={closeAll} aria-label={`${site.name} ${site.tagline}, home`}>
+              <Image src="/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} priority />
             </Link>
 
             <span className="nav-marker" aria-hidden="true" style={marker ? { left: marker.left, width: marker.width, opacity: 1 } : { opacity: 0 }} />
@@ -140,17 +136,19 @@ export default function Header() {
                       <div className="mega-grid">
                         {models.map((m) => (
                           <Link key={m.slug} href={`/models/${m.slug}`} className="mega-item" onClick={closeAll} tabIndex={megaOpen ? 0 : -1}>
-                            <ContainerArt variant={m.variant} body={m.body} label="" />
+                            <span className="mega-thumb">
+                              <Image src={`/images/${m.photo}.jpg`} alt="" fill sizes="280px" style={m.pos ? { objectPosition: m.pos } : undefined} />
+                            </span>
                             <span className="mega-tag">{m.tag}</span>
                             <strong>{m.name}</strong>
-                            <span className="mega-facts">{m.area.split(" / ")[0]}</span>
+                            <span className="mega-facts">{m.short}</span>
                           </Link>
                         ))}
                       </div>
                       <div className="mega-foot">
-                        <span>Not sure which one fits? Tell us about your plot and we will advise.</span>
+                        <span>Not sure which one fits? Tell us about the job and we will advise.</span>
                         <Link href="/models" className="text-link" onClick={closeAll} tabIndex={megaOpen ? 0 : -1}>
-                          View all models <span aria-hidden="true">→</span>
+                          View all units <span aria-hidden="true">→</span>
                         </Link>
                       </div>
                     </div>

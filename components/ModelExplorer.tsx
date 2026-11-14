@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import ContainerArt from "./ContainerArt";
-import { models } from "@/lib/models";
+import { models, photoAlt } from "@/lib/models";
 
 export default function ModelExplorer() {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   const m = models[active];
 
   return (
@@ -19,31 +19,25 @@ export default function ModelExplorer() {
               <strong>{x.name}</strong>
               <small>{x.tag}</small>
             </span>
-            <span className="explorer-area">{x.area.split(" / ")[0]}</span>
+            <span className="explorer-area">{x.short}</span>
           </button>
         ))}
       </div>
 
       <div className="explorer-panel cast" aria-live="polite">
         <div className="explorer-art" key={m.slug}>
-          <ContainerArt variant={m.variant} body={m.body} label={`${m.name} illustration`} />
-          <span className="plate">{m.modules}</span>
+          <Image src={`/images/${m.photo}.jpg`} alt={photoAlt(m)} fill sizes="(max-width: 1000px) 100vw, 60vw" style={m.pos ? { objectPosition: m.pos } : undefined} />
+          <span className="plate">{m.size}</span>
         </div>
         <div className="explorer-info">
           <p>{m.summary}</p>
           <dl className="model-facts">
-            <div>
-              <dt>Beds</dt>
-              <dd>{m.beds}</dd>
-            </div>
-            <div>
-              <dt>Baths</dt>
-              <dd>{m.baths}</dd>
-            </div>
-            <div>
-              <dt>Area</dt>
-              <dd>{m.area.split(" / ")[0]}</dd>
-            </div>
+            {m.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
           </dl>
           <div className="btn-row">
             <Link href={`/models/${m.slug}`} className="btn btn-green">
