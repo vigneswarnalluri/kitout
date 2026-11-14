@@ -22,6 +22,7 @@ export default function Header() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastY = useRef(0);
   const menuOpen = useRef(false);
+  const target = useRef<Element | null>(null);
 
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
   const closeAll = () => {
@@ -31,6 +32,7 @@ export default function Header() {
 
   // The sliding highlight: position it over a link, measured against the bar.
   const moveTo = useCallback((el: Element | null) => {
+    target.current = el;
     const bar = barRef.current;
     if (!el || !bar) return setMarker(null);
     const a = el.getBoundingClientRect();
@@ -49,6 +51,16 @@ export default function Header() {
     setHidden(false);
     toActive();
   }, [pathname, toActive]);
+
+  // The logo shrinks when the bar goes compact, which slides the links sideways.
+  // Re-measure whenever anything in the bar changes size, so the highlight stays on its link.
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar || typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => moveTo(target.current?.isConnected ? target.current : bar.querySelector(".nav-link.active")));
+    Array.from(bar.children).forEach((c) => ro.observe(c));
+    return () => ro.disconnect();
+  }, [moveTo]);
 
   useEffect(() => {
     document.fonts?.ready.then(toActive);
