@@ -20,12 +20,20 @@ export default function ContactPage() {
               <p>
                 <a href={`mailto:${site.email}`}>{site.email}</a>
                 <br />
-                <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+                <a href={site.phoneHref}>{site.phone}</a> (call or WhatsApp)
+                <br />
+                <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+                  Message us on WhatsApp
+                </a>
               </p>
             </div>
             <div className="contact-block">
               <h3>Workshop</h3>
-              <p>{site.address}</p>
+              <p>
+                <a href={site.mapHref} target="_blank" rel="noopener noreferrer">
+                  {site.address}
+                </a>
+              </p>
             </div>
             <div className="contact-block">
               <h3>Hours</h3>
@@ -37,6 +45,16 @@ export default function ContactPage() {
                   </li>
                 ))}
               </ul>
+            </div>
+            <div className="contact-block">
+              <h3>Follow us</h3>
+              <p className="contact-social">
+                {site.social.map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+                    {s.label}
+                  </a>
+                ))}
+              </p>
             </div>
           </div>
           <div className="form-panel" id="quote">

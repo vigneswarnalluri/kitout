@@ -6,6 +6,7 @@ import ModelExplorer from "@/components/sections/ModelExplorer";
 import PhotoGallery from "@/components/sections/PhotoGallery";
 import Showreel from "@/components/sections/Showreel";
 import { models } from "@/lib/models";
+import { emptyContainerLine, pending, site } from "@/lib/site";
 
 const stats = [
   { value: `${models.length}`, label: "Unit types to start from" },
@@ -16,22 +17,22 @@ const stats = [
 const steps = [
   { title: "Design", text: "Start from one of our units or bring your own layout. We agree the plan, the finishes and the price before any steel is cut." },
   { title: "Build", text: "Your unit is built indoors: framing, spray foam insulation, wiring, wall panels, flooring and air conditioning, all finished and checked in the workshop." },
-  { title: "Deliver", text: "The finished unit travels by truck, is set in place on your site and connected to power." },
+  { title: "Deliver", text: "The finished unit travels by truck, is set in place on your site and connected to power — ready to work in the day it lands." },
 ];
 
 // Matches what the photo beside it shows: the 40ft office and storage build.
-const aboutPoints = ["Spray foam insulation", "Framed and lined interior", "Wiring and lighting", "Mini-split air conditioning"];
+const aboutPoints = ["Spray foam insulation", "Framed and lined interior", "Wiring and lighting", "Mini-split air conditioning", "Finished flooring"];
 
 const reasons: { title: string; text: string; icon: IconName }[] = [
-  { title: "Built to travel", text: "A container is a steel frame engineered to be stacked high and shipped across oceans. That makes it a strong, secure shell for an office or a store.", icon: "shield" },
+  { title: "Built to travel", text: "A container is a steel frame engineered to be stacked high and shipped across oceans. That makes it a strong, secure shell for an office, a home or a store.", icon: "shield" },
   { title: "Faster than site building", text: "Workshop construction is not held up by weather, and your site can be prepared while the unit is being built.", icon: "clock" },
   { title: "A fixed price", text: "You agree the specification and the price up front, with a clear list of what is and is not included.", icon: "tag" },
   { title: "Room to grow", text: "Units can be added, stacked or moved later as your needs change. Tell us at the design stage and we plan the connections in.", icon: "grow" },
 ];
 
-const uses = ["Site offices", "Secure storage", "Office + storage", "Stacked offices", "Sales offices", "Break rooms", "Workshops", "Equipment stores", "Pop-up retail", "Custom builds"];
-const usesA = uses.slice(0, 5);
-const usesB = uses.slice(5);
+const uses = ["Site offices", "Secure storage", "Office + storage", "Stacked offices", "Container homes", "Sales offices", "Break rooms", "Workshops", "Equipment stores", "Pop-up retail", "Custom builds", "Empty containers"];
+const usesA = uses.slice(0, 6);
+const usesB = uses.slice(6);
 
 function MarqueeRow({ items, reverse }: { items: string[]; reverse?: boolean }) {
   const track = (
@@ -61,9 +62,12 @@ export default function HomePage() {
           <Image src="/images/brand/hero-container.jpg" alt="White shipping container carrying the Kit Out Container Co. logo, in a container terminal at golden hour" fill priority sizes="100vw" />
         </div>
         <div className="container hero4-inner">
-          <h1>
-            Container offices and storage, <em>finished</em> before they arrive.
-          </h1>
+          <div>
+            <h1>
+              Container offices and storage, <em>finished</em> before they arrive.
+            </h1>
+            <p className="hero-slogan">{site.slogan}</p>
+          </div>
           <div className="btn-row">
             <Link href="/contact#quote" className="btn btn-gold">
               Get a Quote
@@ -77,7 +81,7 @@ export default function HomePage() {
 
       <div className="hero4-strip">
         <div className="container hero4-strip-inner">
-          <p className="hero-sub">We convert shipping containers into insulated offices, secure storage and stacked buildings in our workshop, then deliver them ready to plug in and use.</p>
+          <p className="hero-sub">We turn new one-trip shipping containers into insulated offices, homes and secure storage in our Bessemer, Alabama workshop — and we sell empty containers too. Every finished unit leaves wired, lined and climate controlled, ready to plug in and use.</p>
           <dl>
             {stats.map((s) => (
               <div key={s.label}>
@@ -133,6 +137,7 @@ export default function HomePage() {
           <div data-reveal>
             <ModelExplorer />
           </div>
+          {pending.showPrices ? <p className="units-note">{emptyContainerLine}</p> : null}
         </div>
       </section>
 
@@ -155,7 +160,7 @@ export default function HomePage() {
             <span className="eyebrow">About Kit Out</span>
             <h2 className="section-heading">Workspace with a steel backbone.</h2>
             <p className="section-body">
-              Kit Out turns shipping containers into insulated, fully finished offices and storage units. Every build leaves our workshop wired, lined and climate controlled, so it is ready to use the day it lands.
+              Kit Out turns shipping containers into insulated, fully finished offices, homes and storage units in Bessemer, Alabama. Every build leaves our workshop wired, lined and climate controlled, so it is ready to use the day it lands.
             </p>
             <Link href="/about" className="btn btn-green">
               Learn More About Us
@@ -164,14 +169,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-tight-top">
+      <section className="section section-tight-top" id="work">
         <div className="container">
           <div className="row-head" data-reveal>
             <div>
               <span className="eyebrow">Our work</span>
               <h2 className="section-heading">Offices, storage and stacked builds.</h2>
             </div>
-            <p className="row-note">Recent Kit Out builds, from single 40-foot offices to a two-story stack with a deck. Filter by build, and select a photo to enlarge it.</p>
+            <p className="row-note">Work from our Bessemer yard — single 40-foot offices, office-and-storage combos, and the two-story stacked offices we build to order. Filter by build, and select a photo to enlarge it.</p>
           </div>
           <PhotoGallery />
         </div>
@@ -221,6 +226,11 @@ export default function HomePage() {
         </div>
         <MarqueeRow items={usesA} />
         <MarqueeRow items={usesB} reverse />
+        {pending.showLeaseToOwn ? (
+          <div className="container">
+            <p className="units-note">Lease-to-own available for businesses — ask us for terms.</p>
+          </div>
+        ) : null}
       </section>
 
       <CtaBand />

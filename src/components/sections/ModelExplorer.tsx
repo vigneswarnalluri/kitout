@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { models, photoAlt } from "@/lib/models";
+import { models, photoAlt, plateText } from "@/lib/models";
+import { pending } from "@/lib/site";
 
 export default function ModelExplorer() {
   const [active, setActive] = useState(0);
@@ -27,10 +28,11 @@ export default function ModelExplorer() {
       <div className="explorer-panel cast" aria-live="polite">
         <div className="explorer-art" key={m.slug}>
           <Image src={`/images/builds/${m.photo}.jpg`} alt={photoAlt(m)} fill sizes="(max-width: 1000px) 100vw, 60vw" style={m.pos ? { objectPosition: m.pos } : undefined} />
-          <span className="plate">{m.size}</span>
+          <span className="plate">{plateText(m)}</span>
         </div>
         <div className="explorer-info">
           <p>{m.summary}</p>
+          {pending.showPrices && m.price ? <p className="price-line">{m.price}</p> : null}
           <dl className="model-facts">
             {m.facts.map((f) => (
               <div key={f.label}>

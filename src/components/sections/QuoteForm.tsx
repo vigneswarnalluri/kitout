@@ -69,6 +69,7 @@ export default function QuoteForm({ defaultModel = "" }: { defaultModel?: string
                 {m.name} ({m.tag})
               </option>
             ))}
+            <option value="Empty container">Empty container</option>
             <option value="Custom">Custom build</option>
           </select>
         </label>
@@ -80,6 +81,7 @@ export default function QuoteForm({ defaultModel = "" }: { defaultModel?: string
             <option>Permanent office</option>
             <option>Storage</option>
             <option>Office and storage</option>
+            <option>Container home</option>
             <option>Retail, sales or hospitality</option>
             <option>Other</option>
           </select>

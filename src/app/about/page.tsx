@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import CtaBand from "@/components/sections/CtaBand";
 import PageHero from "@/components/sections/PageHero";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -25,6 +26,10 @@ export default function AboutPage() {
             <div className="divider" />
             <p>
               A shipping container is a remarkable piece of engineering: a weatherproof steel frame made to carry heavy loads, be stacked high and cross oceans. That makes it a strong starting point for a building, provided the conversion is done with care.
+            </p>
+            <p>
+              We are based at 1166 Raimund Muscoda Rd, Bessemer, Alabama, and we serve customers across Alabama. Call Rick at <a href={site.phoneHref}>{site.phone}</a> or email{" "}
+              <a href={`mailto:${site.email}`}>{site.email}</a> to talk about your build.
             </p>
             <p>
               We reinforce every opening we cut, frame and insulate the interior, and finish it to the standard you would expect of any new office. Because the work happens in a workshop, each stage can be inspected before the next begins.

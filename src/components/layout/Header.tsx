@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { models } from "@/lib/models";
 import { nav, site } from "@/lib/site";
 
-const tel = `tel:${site.phone.replace(/\s/g, "")}`;
+const tel = site.phoneHref;
 
 export default function Header() {
   const pathname = usePathname();
@@ -130,20 +130,19 @@ export default function Header() {
               {nav.map((item) =>
                 item.href === "/models" ? (
                   <div key={item.href} className="nav-drop" ref={dropRef} onMouseEnter={openMega} onMouseLeave={closeMegaSoon}>
-                    <button
-                      type="button"
-                      className={isActive(item.href) ? "nav-link active" : "nav-link"}
-                      aria-expanded={megaOpen}
-                      aria-controls="models-menu"
+                    {/* A real link to /models; the unit menu is a hover extra. */}
+                    <Link
+                      href={item.href}
+                      className={["nav-link", isActive(item.href) ? "active" : "", megaOpen ? "open" : ""].filter(Boolean).join(" ")}
                       onMouseEnter={(e) => moveTo(e.currentTarget)}
                       onFocus={(e) => moveTo(e.currentTarget)}
-                      onClick={() => setMegaOpen((v) => !v)}
+                      onClick={closeAll}
                     >
                       {item.label}
                       <svg className="chev" viewBox="0 0 12 8" aria-hidden="true">
                         <path d="M1 1.5 6 6.5 11 1.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
                       </svg>
-                    </button>
+                    </Link>
                     <div id="models-menu" className={megaOpen ? "mega open" : "mega"}>
                       <div className="mega-grid">
                         {models.map((m) => (

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const steps = [
   { title: "Talk to us", text: "Send a quote request with your location, the unit you like and how you plan to use it. We reply with questions, rough costs and anything worth checking with your local authority." },
   { title: "Design and quote", text: "We fit the layout to the job, agree finishes and fittings, and issue a fixed written quote that lists exactly what is included." },
-  { title: "Workshop build", text: "The container is cut, reinforced, framed, insulated, wired and fitted out indoors. You receive progress photos, and you are welcome to visit." },
+  { title: "Workshop build", text: "The container is cut, reinforced, framed, insulated, wired and fitted out indoors. You receive progress photos, and you are welcome to visit. Shell, partial build, or fully finished turnkey — you choose how far we take it." },
   { title: "Site preparation", text: "While we build, you prepare a firm, level base and a power supply, to the details we provide." },
   { title: "Delivery and placement", text: "The finished unit travels by truck and is set in place. Stacked builds are assembled and secured on site." },
   { title: "Connection and handover", text: "Power is connected, everything is tested, and we walk you through your new space." },

@@ -25,11 +25,21 @@ export type Model = {
   specs: { label: string; value: string }[];
   included: string[];
   upgrades: string[];
+  /**
+   * Shown only when pending.showPrices is true in site.ts. Left empty on purpose: this file
+   * ships to the browser, so unapproved prices must not be written here. Once Rick signs off,
+   * fill in from the wording pack (Office 20 "From $…", Office 40, Combo 40,
+   * Stacked "Priced to order — request a quote") and set showPrices to true.
+   */
+  price?: string;
+  /** The lead image is an illustration, not a photo of a finished unit. */
+  illustration?: boolean;
 };
 
-// The four unit types, each based on a real Kit Out build. Sizes follow standard
-// container dimensions. Inclusions and options were drafted from the build photos
-// and need the client's confirmation before launch.
+export const plateText = (m: Model) => (m.illustration ? `${m.size} · Illustration` : m.size);
+
+// The four unit types. Sizes follow standard container dimensions. Wording, inclusions
+// and options follow the client's wording pack of 2026-11-17.
 export const models: Model[] = [
   {
     slug: "office-20",
@@ -37,6 +47,7 @@ export const models: Model[] = [
     tag: "Modular office · 20ft",
     project: "modular",
     photo: "modular-office",
+    illustration: true,
     size: "1 × 20ft container",
     short: "160 sq ft",
     summary: "A compact, self-contained office in a single 20-foot container, with a steel entry door, canopy light and window.",
@@ -63,8 +74,8 @@ export const models: Model[] = [
       { label: "Insulation", value: "Spray foam" },
       { label: "Entry", value: "Steel door with canopy and light" },
     ],
-    included: ["Framed and insulated interior", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Steel entry door with canopy light", "Sliding window", "Exterior paint"],
-    upgrades: ["Mini-split air conditioning", "Window security screen", "Built-in desk and shelving", "Custom paint color"],
+    included: ["Framed and insulated interior", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Steel entry door with canopy light", "Sliding window", "Mini-split air conditioning", "Exterior paint"],
+    upgrades: ["Window security screen", "Built-in desk and shelving", "Custom paint color"],
   },
   {
     slug: "office-40",
@@ -99,7 +110,7 @@ export const models: Model[] = [
       { label: "Heating and cooling", value: "Mini-split unit" },
       { label: "Floor", value: "Coated, easy-clean finish" },
     ],
-    included: ["Framed and insulated interior", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Mini-split air conditioning", "Coated floor", "Steel entry door and windows", "Exterior paint"],
+    included: ["Framed and insulated interior", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Steel entry door", "Two windows", "Mini-split air conditioning", "Finished flooring (epoxy-coated)", "Exterior paint"],
     upgrades: ["Window security screens", "Partition for a second room", "Data and network cabling", "Custom paint color"],
   },
   {
@@ -113,7 +124,7 @@ export const models: Model[] = [
     short: "320 sq ft",
     summary: "One 40-foot container split into a finished office and a secure storage bay, joined by an interior door.",
     intro:
-      "The Combo 40 puts an insulated, air-conditioned office at one end and a storage bay at the other. The storage side keeps the original lockable cargo doors for easy loading, and an interior door links the two.",
+      "The Combo 40 puts a 16 ft insulated, air-conditioned office at one end and a 24 ft storage bay at the other. The storage side keeps the original lockable cargo doors for easy loading, and an interior door links the two.",
     facts: [
       { label: "Length", value: "40 ft" },
       { label: "Floor area", value: "320 sq ft" },
@@ -135,7 +146,7 @@ export const models: Model[] = [
       { label: "Storage bay", value: "Original cargo doors, door through to the office" },
       { label: "Heating and cooling", value: "Mini-split unit in the office" },
     ],
-    included: ["Framed and insulated office", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Exterior electrical panel", "Mini-split air conditioning", "Steel entry door and window", "Interior door to the storage bay", "Exterior paint"],
+    included: ["Framed and insulated office", "Wall and ceiling panels", "Wiring, LED lighting and outlets", "Exterior electrical panel", "Mini-split air conditioning with HVAC guard", "Steel entry door and window", "Window security screen", "Interior door to the storage bay", "Exterior paint"],
     upgrades: ["Window security screen", "Shelving and racking in the storage bay", "Lighting in the storage bay", "Custom paint color"],
   },
   {
@@ -149,7 +160,7 @@ export const models: Model[] = [
     short: "Two stories",
     summary: "A two-story container office with folding glass doors, a rooftop deck and an outdoor deck at ground level.",
     intro:
-      "Stacked builds set one container on top of another to double the floor space on the same footprint. This one pairs a glazed ground floor that opens onto a deck with an upper level and a covered rooftop deck. Every stacked build is designed to order.",
+      "Stacked builds set one container on top of another to double the floor space on the same footprint. We have built stacked offices before and own stacked units — yours is built to order around your site, with the decks, stairs and layout planned to fit it.",
     facts: [
       { label: "Stories", value: "2" },
       { label: "Floor area", value: "To order" },

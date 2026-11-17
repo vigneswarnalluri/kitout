@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import { photoAlt, type Model } from "@/lib/models";
+import { photoAlt, plateText, type Model } from "@/lib/models";
+import { pending } from "@/lib/site";
 
 export default function ModelCard({ model }: { model: Model }) {
   return (
     <article className="model-card cast">
       <div className="model-card-art">
         <Image src={`/images/builds/${model.photo}.jpg`} alt={photoAlt(model)} fill sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
-        <span className="plate">{model.size}</span>
+        <span className="plate">{plateText(model)}</span>
       </div>
       <div className="model-card-body">
         <div className="model-card-head">
@@ -22,6 +23,7 @@ export default function ModelCard({ model }: { model: Model }) {
           </span>
         </div>
         <p className="model-desc">{model.summary}</p>
+        {pending.showPrices && model.price ? <p className="price-line">{model.price}</p> : null}
         <dl className="model-facts">
           {model.facts.map((f) => (
             <div key={f.label}>

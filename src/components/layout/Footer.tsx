@@ -9,7 +9,9 @@ export default function Footer() {
       <div className="container footer-grid">
         <div>
           <Image className="footer-logo" src="/images/brand/logo-white.png" alt={`${site.name} ${site.tagline}`} width={1180} height={336} />
-          <p className="footer-text">{site.description}</p>
+          <p className="footer-text">
+            {site.description} {site.slogan}
+          </p>
         </div>
         <div>
           <h4>Explore</h4>
@@ -38,13 +40,22 @@ export default function Footer() {
               <a href={`mailto:${site.email}`}>{site.email}</a>
             </li>
             <li>
-              <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+              <a href={site.phoneHref}>{site.phone}</a>
             </li>
-            <li>{site.address}</li>
+            <li>
+              <a href={site.whatsappHref} target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={site.mapHref} target="_blank" rel="noopener noreferrer">
+                {site.address}
+              </a>
+            </li>
           </ul>
           <p className="footer-social">
             {site.social.map((s) => (
-              <a key={s.label} href={s.href}>
+              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
                 {s.label}
               </a>
             ))}

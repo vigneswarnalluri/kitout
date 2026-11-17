@@ -6,7 +6,8 @@ import PageHero from "@/components/sections/PageHero";
 import PhotoGallery from "@/components/sections/PhotoGallery";
 import QuoteForm from "@/components/sections/QuoteForm";
 import { photos } from "@/lib/media";
-import { getModel, models, photoAlt } from "@/lib/models";
+import { getModel, models, photoAlt, plateText } from "@/lib/models";
+import { pending } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -29,7 +30,7 @@ export default async function ModelPage({ params }: Params) {
 
   return (
     <>
-      <PageHero eyebrow={model.tag} title={model.name} text={model.summary}>
+      <PageHero eyebrow={model.tag} title={model.name} text={model.summary} price={pending.showPrices ? model.price : undefined}>
         <a href="#specs" className="btn btn-outline-white">
           Specifications
         </a>
@@ -49,7 +50,7 @@ export default async function ModelPage({ params }: Params) {
           <div className="split-art" data-reveal="left">
             <div className="photo">
               <Image src={`/images/builds/${model.photo}.jpg`} alt={photoAlt(model)} fill priority sizes="(max-width: 860px) 100vw, 50vw" style={model.pos ? { objectPosition: model.pos } : undefined} />
-              <span className="plate">{model.size}</span>
+              <span className="plate">{plateText(model)}</span>
             </div>
           </div>
           <div>

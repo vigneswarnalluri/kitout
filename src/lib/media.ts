@@ -1,4 +1,5 @@
-// Photos are Kit Out's own, supplied by the client.
+// Images were supplied by the client. modular-office looks like a render, not a photo of a
+// real unit, so it is labelled as an illustration until the client confirms or replaces it.
 // Video clips are still stock; sources and licences are listed in docs/MEDIA-CREDITS.md.
 
 // Each build is one filter tab in the gallery.
@@ -6,7 +7,7 @@ export const projects = [
   { key: "stack", label: "Two-story office" },
   { key: "office40", label: "40ft all-office" },
   { key: "combo", label: "40ft office + storage" },
-  { key: "modular", label: "Modular office" },
+  { key: "modular", label: "Modular office (illustration)" },
 ] as const;
 
 export type Photo = { file: string; project: (typeof projects)[number]["key"]; w: number; h: number; alt: string; caption: string };
@@ -15,7 +16,7 @@ export const photos: Photo[] = [
   { file: "stack-deck", project: "stack", w: 1206, h: 1609, alt: "Two-story stacked container office in dark gray, with glazed doors, a balcony and a wide composite deck", caption: "Two-story stacked office with deck" },
   { file: "office40-exterior", project: "office40", w: 945, h: 760, alt: "Gray 40-foot container office with two windows, a steel door and a mini-split air conditioner", caption: "40ft all-office unit, exterior" },
   { file: "build-exterior", project: "combo", w: 1206, h: 1608, alt: "Cream 40-foot container with a door, window and wall-mounted mini-split air conditioner", caption: "Combo unit: finished exterior with mini-split" },
-  { file: "modular-office", project: "modular", w: 1600, h: 1208, alt: "Cream container office with a dark steel door, entry canopy with light, and a sliding window", caption: "Modular office with entry canopy" },
+  { file: "modular-office", project: "modular", w: 1600, h: 1208, alt: "Illustration of a cream container office with a dark steel door, entry canopy with light, and a sliding window", caption: "Illustration: modular office with entry canopy" },
   { file: "stack-front", project: "stack", w: 1206, h: 1609, alt: "Front of the two-story container office: folding glass doors under an awning, with a balcony above", caption: "Folding glass doors and upper balcony" },
   { file: "office40-interior", project: "office40", w: 1206, h: 1609, alt: "Inside the 40-foot office: panelled walls, epoxy floor, windows on both sides, desk and wall-mounted air conditioner", caption: "40ft all-office unit, interior" },
   { file: "build-office", project: "combo", w: 1206, h: 904, alt: "Finished office interior with panelled walls, a window, ceiling lights and an interior door", caption: "Combo unit: finished office interior" },

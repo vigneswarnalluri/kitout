@@ -2,8 +2,10 @@
 
 ## Photos (`public/images/builds/`)
 
-All photos are Kit Out's own, supplied by the client: the 40ft combo office and storage build,
-the two-storey stacked office, the grey 40ft all-office unit and the cream modular office image. Location data and other camera metadata were removed from the published copies.
+All images were supplied by the client: the 40ft combo office and storage build,
+the two-storey stacked office (a unit Kit Out owns, not a customer build), the grey 40ft all-office unit and the cream modular office image. Location data and other camera metadata were removed from the published copies.
+
+The cream modular office image (`modular-office.jpg`, supplied as `image.png`) looks like a render rather than a photo of a real unit, so the site labels it as an illustration. Rick to confirm what it is, or supply a real photo of a 20ft build to replace it.
 
 The hero image (`public/images/brand/hero-container.jpg`) is the client's branding image of a Kit Out container.
 

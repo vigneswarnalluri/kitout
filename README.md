@@ -66,7 +66,15 @@ variables in Netlify. Until they are set, the live form answers with a "not conn
 
 ## Still placeholder
 
-- Contact details in `src/lib/site.ts`.
 - Showreel video (stock footage; see `docs/MEDIA-CREDITS.md`).
-- Unit names, inclusions and upgrades in `src/lib/models.ts` were drafted from build photos and
-  need the client's confirmation.
+- The cream modular office image is labelled as an illustration until Rick confirms what it is or
+  sends a real photo of a 20ft build.
+
+## Waiting on Rick's sign-off
+
+Switches live in `pending` in `src/lib/site.ts`; both are off.
+
+- `showPrices`: unit prices and the empty-container prices. The unit prices are deliberately not in
+  `src/lib/models.ts` yet, because that file is sent to the browser. Add them, then turn the switch on.
+- `showLeaseToOwn`: the lease-to-own line on the homepage and its FAQ answer.
+- No deposit or payment terms anywhere until Rick confirms them.
