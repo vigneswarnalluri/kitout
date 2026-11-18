@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import PageHero from "@/components/sections/PageHero";
 import QuoteForm from "@/components/sections/QuoteForm";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description: "Request a quote for a container office or storage unit, or get in touch with the Kit Out team.",
-};
+export const metadata = pageMeta({
+  title: "Contact Us & Request a Quote",
+  description:
+    "Request a quote for a shipping container office, storage unit or empty container. Call or WhatsApp (256) 227-9757, email info@kitoutcontainer.com, or visit us in Bessemer, AL. Open Mon–Fri 8 AM–5 PM.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

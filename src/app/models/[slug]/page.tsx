@@ -8,6 +8,8 @@ import QuoteForm from "@/components/sections/QuoteForm";
 import { photos } from "@/lib/media";
 import { getModel, models, photoAlt, plateText } from "@/lib/models";
 import { pending } from "@/lib/site";
+import JsonLd from "@/components/seo/JsonLd";
+import { breadcrumbSchema, pageMeta, unitSchema } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -18,7 +20,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const model = getModel(slug);
-  return model ? { title: model.name, description: model.summary } : {};
+  if (!model) return {};
+  const photo = photos.find((p) => p.file === model.photo);
+  return pageMeta({
+    title: model.seoTitle,
+    description: `${model.summary} Built in Bessemer, Alabama and delivered ready to use. Request a quote.`,
+    path: `/models/${model.slug}`,
+    image: photo ? { url: `/images/builds/${photo.file}.jpg`, width: photo.w, height: photo.h, alt: photo.alt } : undefined,
+  });
 }
 
 export default async function ModelPage({ params }: Params) {
@@ -30,6 +39,16 @@ export default async function ModelPage({ params }: Params) {
 
   return (
     <>
+      <JsonLd
+        data={[
+          unitSchema(model),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Units", path: "/models" },
+            { name: model.name, path: `/models/${model.slug}` },
+          ]),
+        ]}
+      />
       <PageHero eyebrow={model.tag} title={model.name} text={model.summary} price={pending.showPrices ? model.price : undefined}>
         <a href="#specs" className="btn btn-outline-white">
           Specifications

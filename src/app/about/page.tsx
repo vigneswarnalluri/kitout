@@ -1,13 +1,16 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import CtaBand from "@/components/sections/CtaBand";
 import PageHero from "@/components/sections/PageHero";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
-  description: "Kit Out Container Co. converts shipping containers into offices and storage units in the workshop and delivers them ready to use.",
-};
+export const metadata = pageMeta({
+  title: "About Us: Container Builders in Bessemer, Alabama",
+  description:
+    "Kit Out Container Co. is a Bessemer, Alabama workshop that converts new one-trip shipping containers into insulated offices, homes and storage, serving customers across Alabama.",
+  path: "/about",
+  image: { url: "/images/builds/build-office.jpg", width: 1206, height: 904, alt: "Finished office interior inside a Kit Out container" },
+});
 
 const values = [
   { title: "Finished in the workshop", text: "Building indoors means steady quality and no weather delays." },

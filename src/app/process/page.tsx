@@ -1,11 +1,14 @@
-import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import CtaBand from "@/components/sections/CtaBand";
 import PageHero from "@/components/sections/PageHero";
 
-export const metadata: Metadata = {
-  title: "How It Works",
-  description: "From first conversation to handover: how a Kit Out container office or storage unit is designed, built and delivered.",
-};
+export const metadata = pageMeta({
+  title: "How It Works: From Quote to Delivery",
+  description:
+    "Six steps from first call to handover: design and fixed quote, workshop build in Bessemer, AL, site preparation, delivery by truck and power connection. Shell, partial or turnkey builds.",
+  path: "/process",
+  image: { url: "/images/builds/build-foam.jpg", width: 1206, height: 904, alt: "Spray foam insulation going into a Kit Out container build" },
+});
 
 const steps = [
   { title: "Talk to us", text: "Send a quote request with your location, the unit you like and how you plan to use it. We reply with questions, rough costs and anything worth checking with your local authority." },

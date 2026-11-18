@@ -5,6 +5,8 @@ type ProjectKey = (typeof projects)[number]["key"];
 export type Model = {
   slug: string;
   name: string;
+  /** Page title for search results (the site name is appended). */
+  seoTitle: string;
   tag: string;
   /** Which build in the photo gallery this unit is shown by. */
   project: ProjectKey;
@@ -44,6 +46,7 @@ export const models: Model[] = [
   {
     slug: "office-20",
     name: "Office 20",
+    seoTitle: "Office 20: 20 ft Shipping Container Office",
     tag: "Modular office · 20ft",
     project: "modular",
     photo: "modular-office",
@@ -80,6 +83,7 @@ export const models: Model[] = [
   {
     slug: "office-40",
     name: "Office 40",
+    seoTitle: "Office 40: 40 ft Shipping Container Office",
     tag: "All-office · 40ft",
     project: "office40",
     photo: "office40-exterior",
@@ -116,6 +120,7 @@ export const models: Model[] = [
   {
     slug: "combo-40",
     name: "Combo 40",
+    seoTitle: "Combo 40: 40 ft Container Office and Storage Unit",
     tag: "Office + storage · 40ft",
     project: "combo",
     photo: "build-exterior",
@@ -152,6 +157,7 @@ export const models: Model[] = [
   {
     slug: "stacked-office",
     name: "Stacked Office",
+    seoTitle: "Stacked Office: Two-Story Shipping Container Office",
     tag: "Two stories · built to order",
     project: "stack",
     photo: "stack-deck",
