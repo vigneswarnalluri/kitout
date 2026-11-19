@@ -60,9 +60,21 @@ New photos from the client: keep the original in `client-originals/`, and save a
 
 ## Quote form email
 
-The form posts to `/api/quote`, which sends through [Resend](https://resend.com). Copy
-`.env.example` to `.env.local` and fill in the three values; set the same three as environment
-variables in Netlify. Until they are set, the live form answers with a "not connected" message.
+The quote forms (Contact page and each unit page) post to `/api/quote`, which emails the request
+to info@kitoutcontainer.com through [Resend](https://resend.com). Replies go straight to the customer.
+
+To switch it on:
+
+1. Create a Resend account and add the domain `kitoutcontainer.com` (Domains, Add domain).
+2. Add the DNS records Resend shows (SPF, DKIM, and optionally DMARC) where the domain is
+   managed (currently Wix: Domains, Manage DNS records). Wait for Resend to show "Verified".
+3. Create an API key with "Sending access".
+4. In Netlify (Site configuration, Environment variables) set `RESEND_API_KEY` and
+   `QUOTE_FROM_EMAIL="Kit Out Website <quotes@kitoutcontainer.com>"`, then redeploy.
+
+`QUOTE_TO_EMAIL` is optional and only needed to send requests somewhere other than
+info@kitoutcontainer.com. Until the two required values are set, the live form tells visitors to
+call or email instead.
 
 ## Still placeholder
 
