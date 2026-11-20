@@ -79,14 +79,14 @@ call or email instead.
 ## Still placeholder
 
 - Showreel video (stock footage; see `docs/MEDIA-CREDITS.md`).
-- The cream modular office image is labelled as an illustration until Rick confirms what it is or
-  sends a real photo of a 20ft build.
+- The cream modular office image (Office 20) is labelled as an illustration. Rick is sending a real
+  build photo to replace it.
 
-## Waiting on Rick's sign-off
+## Prices and lease-to-own
 
-Switches live in `pending` in `src/lib/site.ts`; both are off.
+Approved by Rick on 2026-11-19. Unit prices and monthly lease figures are in `src/lib/models.ts`
+(`price`, `priceValue`, `lease`); the empty-container prices are in `src/lib/site.ts` and
+`src/app/models/page.tsx`; the lease FAQ answer is in `src/lib/faqs.ts`. To hide them again, turn
+off `showPrices` or `showLeaseToOwn` in `pending` in `src/lib/site.ts`.
 
-- `showPrices`: unit prices and the empty-container prices. The unit prices are deliberately not in
-  `src/lib/models.ts` yet, because that file is sent to the browser. Add them, then turn the switch on.
-- `showLeaseToOwn`: the lease-to-own line on the homepage and its FAQ answer.
-- No deposit or payment terms anywhere until Rick confirms them.
+No deposit or payment terms anywhere until Rick confirms them.

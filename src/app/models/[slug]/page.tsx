@@ -6,8 +6,7 @@ import PageHero from "@/components/sections/PageHero";
 import PhotoGallery from "@/components/sections/PhotoGallery";
 import QuoteForm from "@/components/sections/QuoteForm";
 import { photos } from "@/lib/media";
-import { getModel, models, photoAlt, plateText } from "@/lib/models";
-import { pending } from "@/lib/site";
+import { getModel, models, photoAlt, plateText, priceText } from "@/lib/models";
 import JsonLd from "@/components/seo/JsonLd";
 import { breadcrumbSchema, pageMeta, unitSchema } from "@/lib/seo";
 
@@ -49,7 +48,7 @@ export default async function ModelPage({ params }: Params) {
           ]),
         ]}
       />
-      <PageHero eyebrow={model.tag} title={model.name} text={model.summary} price={pending.showPrices ? model.price : undefined}>
+      <PageHero eyebrow={model.tag} title={model.name} text={model.summary} price={priceText(model)}>
         <a href="#specs" className="btn btn-outline-white">
           Specifications
         </a>

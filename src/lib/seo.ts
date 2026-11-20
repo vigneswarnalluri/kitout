@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { faqs } from "./faqs";
 import type { Model } from "./models";
-import { site } from "./site";
+import { pending, site } from "./site";
 
 // The address search engines should treat as the real one. Set NEXT_PUBLIC_SITE_URL in Netlify
 // once kitoutcontainer.com points at this site; until then the Netlify address is the live one.
@@ -86,9 +86,24 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
-// Described as a Service, not a Product: Google's Product results require a price, and prices
-// are waiting on the client's sign-off. Switch to Product + Offer once prices go live.
+// Each unit is a built-to-order Service. Units with a published price carry an Offer
+// (a starting price for the Office 20, a fixed price for the others).
 export function unitSchema(m: Model) {
+  const offer =
+    pending.showPrices && m.priceValue
+      ? {
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "USD",
+            url: abs(`/models/${m.slug}`),
+            availability: "https://schema.org/InStock",
+            seller: { "@id": BUSINESS_ID },
+            ...(m.price?.startsWith("From")
+              ? { priceSpecification: { "@type": "PriceSpecification", minPrice: m.priceValue, priceCurrency: "USD" } }
+              : { price: m.priceValue }),
+          },
+        }
+      : {};
   return {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -101,6 +116,7 @@ export function unitSchema(m: Model) {
     provider: { "@id": BUSINESS_ID },
     areaServed: { "@type": "State", name: "Alabama" },
     category: "Shipping container conversion",
+    ...offer,
   };
 }
 

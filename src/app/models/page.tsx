@@ -7,7 +7,7 @@ import { pending } from "@/lib/site";
 
 const intro =
   "Pick a unit as your starting point. Every one can be re-planned, fitted out and painted to suit the job — shell, partial build, or fully finished turnkey.";
-// Price sentence waits for Rick's sign-off (pending.showPrices in site.ts).
+// Shown while pending.showPrices is on in site.ts.
 const boxLine = "Need just the box? We sell new one-trip 20 ft containers from $3,500 and 40 ft high-cubes from $4,850.";
 
 export const metadata = pageMeta({

@@ -14,6 +14,9 @@ const base = [
   { q: "Do you sell empty containers?", a: "Yes. We sell new one-trip 20 ft containers and 40 ft high-cubes, as-is or as the starting point for a build. Call (256) 227-9757 for current stock and delivery pricing." },
 ];
 
-const leaseToOwn = { q: "Do you offer lease-to-own?", a: "Lease-to-own is available for businesses. Ask us for terms when you request your quote." };
+const leaseToOwn = {
+  q: "Do you offer lease-to-own?",
+  a: "Yes, on our offices: the Office 20 at $995 a month, the Combo 40 at $1,195 a month and the Office 40 at $1,295 a month. Ask us for terms when you request your quote.",
+};
 
 export const faqs = () => (pending.showLeaseToOwn ? [...base, leaseToOwn] : base);

@@ -1,4 +1,5 @@
 import { photos, type projects } from "./media";
+import { pending } from "./site";
 
 type ProjectKey = (typeof projects)[number]["key"];
 
@@ -27,18 +28,23 @@ export type Model = {
   specs: { label: string; value: string }[];
   included: string[];
   upgrades: string[];
-  /**
-   * Shown only when pending.showPrices is true in site.ts. Left empty on purpose: this file
-   * ships to the browser, so unapproved prices must not be written here. Once Rick signs off,
-   * fill in from the wording pack (Office 20 "From $…", Office 40, Combo 40,
-   * Stacked "Priced to order — request a quote") and set showPrices to true.
-   */
+  /** Price line, shown when pending.showPrices is true in site.ts. Approved by Rick on 2026-11-19. */
   price?: string;
+  /** Number for structured data, in US dollars. Leave out when the unit is priced to order. */
+  priceValue?: number;
+  /** Monthly lease-to-own figure, shown when pending.showLeaseToOwn is true. Approved 2026-11-19. */
+  lease?: string;
   /** The lead image is an illustration, not a photo of a finished unit. */
   illustration?: boolean;
 };
 
 export const plateText = (m: Model) => (m.illustration ? `${m.size} · Illustration` : m.size);
+
+/** The price line for cards and unit pages, with the lease-to-own figure when there is one. */
+export const priceText = (m: Model) => {
+  if (!pending.showPrices || !m.price) return undefined;
+  return pending.showLeaseToOwn && m.lease ? `${m.price} · or ${m.lease} lease-to-own` : m.price;
+};
 
 // The four unit types. Sizes follow standard container dimensions. Wording, inclusions
 // and options follow the client's wording pack of 2026-11-17.
@@ -51,6 +57,9 @@ export const models: Model[] = [
     project: "modular",
     photo: "modular-office",
     illustration: true,
+    price: "From $19,995",
+    priceValue: 19995,
+    lease: "$995/mo",
     size: "1 × 20ft container",
     short: "160 sq ft",
     summary: "A compact, self-contained office in a single 20-foot container, with a steel entry door, canopy light and window.",
@@ -87,6 +96,9 @@ export const models: Model[] = [
     tag: "All-office · 40ft",
     project: "office40",
     photo: "office40-exterior",
+    price: "$26,950",
+    priceValue: 26950,
+    lease: "$1,295/mo",
     size: "1 × 40ft container",
     short: "320 sq ft",
     summary: "A full-length office in one 40-foot container, with windows on both sides, a steel entry door and climate control.",
@@ -124,6 +136,9 @@ export const models: Model[] = [
     tag: "Office + storage · 40ft",
     project: "combo",
     photo: "build-exterior",
+    price: "$24,950",
+    priceValue: 24950,
+    lease: "$1,195/mo",
     pos: "50% 62%",
     size: "1 × 40ft container",
     short: "320 sq ft",
@@ -161,6 +176,7 @@ export const models: Model[] = [
     tag: "Two stories · built to order",
     project: "stack",
     photo: "stack-deck",
+    price: "Priced to order — request a quote",
     pos: "50% 28%",
     size: "2 containers, stacked",
     short: "Two stories",

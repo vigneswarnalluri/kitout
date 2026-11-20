@@ -228,7 +228,7 @@ export default function HomePage() {
         <MarqueeRow items={usesB} reverse />
         {pending.showLeaseToOwn ? (
           <div className="container">
-            <p className="units-note">Lease-to-own available for businesses — ask us for terms.</p>
+            <p className="units-note">Lease-to-own available on our offices, from $995/mo — ask us for terms.</p>
           </div>
         ) : null}
       </section>

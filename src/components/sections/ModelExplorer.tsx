@@ -3,8 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { models, photoAlt, plateText } from "@/lib/models";
-import { pending } from "@/lib/site";
+import { models, photoAlt, plateText, priceText } from "@/lib/models";
 
 export default function ModelExplorer() {
   const [active, setActive] = useState(0);
@@ -32,7 +31,7 @@ export default function ModelExplorer() {
         </div>
         <div className="explorer-info">
           <p>{m.summary}</p>
-          {pending.showPrices && m.price ? <p className="price-line">{m.price}</p> : null}
+          {priceText(m) ? <p className="price-line">{priceText(m)}</p> : null}
           <dl className="model-facts">
             {m.facts.map((f) => (
               <div key={f.label}>

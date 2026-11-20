@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { photoAlt, plateText, type Model } from "@/lib/models";
-import { pending } from "@/lib/site";
+import { photoAlt, plateText, priceText, type Model } from "@/lib/models";
 
 export default function ModelCard({ model }: { model: Model }) {
   return (
@@ -23,7 +22,7 @@ export default function ModelCard({ model }: { model: Model }) {
           </span>
         </div>
         <p className="model-desc">{model.summary}</p>
-        {pending.showPrices && model.price ? <p className="price-line">{model.price}</p> : null}
+        {priceText(model) ? <p className="price-line">{priceText(model)}</p> : null}
         <dl className="model-facts">
           {model.facts.map((f) => (
             <div key={f.label}>

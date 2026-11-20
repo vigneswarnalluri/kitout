@@ -23,14 +23,12 @@ export const site = {
   ],
 };
 
-// Waiting on Rick's sign-off. Keep these false until he confirms in writing.
-// showPrices: unit prices (models.ts `price`, still to be filled in) and the empty-container prices.
-// emptyContainerLine is only read by server-rendered pages, so it is not sent to the browser
-// while showPrices is false (checked in the built JS on 2026-11-17).
+// Rick approved prices and lease-to-own on 2026-11-19.
+// showPrices: unit prices (models.ts `price`) and the empty-container prices.
 // showLeaseToOwn: the lease-to-own line on the homepage and the FAQ answer.
 export const pending = {
-  showPrices: false,
-  showLeaseToOwn: false,
+  showPrices: true,
+  showLeaseToOwn: true,
 };
 
 export const emptyContainerLine =
